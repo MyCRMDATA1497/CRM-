@@ -1,11 +1,11 @@
 {
- "name": "보험 고객관리 CRM",
- "short_name": "고객CRM",
+ "name": "VIP사업단 고객관리 CRM",
+ "short_name": "VIP CRM",
  "display": "standalone",
  "start_url": ".",
  "scope": ".",
- "background_color": "#F2F5F9",
- "theme_color": "#16345C",
+ "background_color": "#0B0B0D",
+ "theme_color": "#0B0B0D",
  "icons": [
   {
    "src": "icon-192.png",

@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 <title>보험 고객관리 CRM</title>
-<meta name="theme-color" content="#16345C">
+<meta name="theme-color" content="#0B0B0D">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -14,7 +14,7 @@
 <link rel="manifest" href="manifest.json">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&family=Noto+Serif+KR:wght@700;900&family=Roboto+Mono:wght@400;500;700&display=swap');
 :root{
   --navy:#16345C; --navy2:#1F4E8C; --blue:#2E6FD0; --sky:#EAF2FC;
   --ink:#202B38; --muted:#77839A; --line:#DFE5EE; --bg:#F2F5F9; --panel:#FFFFFF;
@@ -26,7 +26,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{margin:0;padding:0;}
-body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;overflow-x:hidden;}
 body.compact{font-size:13px;}
 .mono{font-family:'Roboto Mono',monospace;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;}
@@ -35,21 +35,27 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 
 /* ---------- Header ---------- */
 .header{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  background:linear-gradient(135deg,#1F1E24 0%,#0B0B0D 55%,#171410 100%);
   color:#fff;padding:12px 20px 10px;
+  border-bottom:1px solid rgba(212,175,55,.35);
 }
 .header-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.logo{font-weight:800;font-size:21px;letter-spacing:.02em;flex:none;}
+.logo{display:flex;flex-direction:column;line-height:1;flex:none;cursor:pointer;min-width:86px;}
+.logo-vip{font-family:'Noto Serif KR',serif;font-size:10.5px;font-weight:700;letter-spacing:.24em;margin-bottom:3px;padding-left:2px;white-space:nowrap;}
+.logo-crm{font-family:'Noto Serif KR',serif;font-size:25px;font-weight:900;letter-spacing:.05em;}
+.logo-vip,.logo-crm{background:linear-gradient(160deg,#F6E27A 0%,#D4AF37 40%,#B8860B 62%,#F6E27A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.logo-line{margin-top:4px;height:2px;background:linear-gradient(90deg,transparent,#D4AF37 25%,#F6E27A 50%,#D4AF37 75%,transparent);position:relative;}
+.logo-line i{position:absolute;left:50%;top:50%;transform:translate(-50%,-54%);font-style:normal;font-size:8px;color:#F6E27A;background:#101013;padding:0 3px;line-height:1;}
 .agent-input{
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  background:rgba(255,255,255,.10);border:1px solid rgba(212,175,55,.45);
   border-radius:8px;padding:6px 10px;color:#fff;width:100px;font-size:13px;flex:none;
 }
 .agent-input::placeholder{color:rgba(255,255,255,.6);}
 .hbtns{display:flex;gap:5px;flex-wrap:wrap;align-items:center;}
 .hbtn{
   position:relative;
-  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);
-  color:#fff;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;white-space:nowrap;
+  background:rgba(255,255,255,.10);border:1px solid rgba(212,175,55,.32);
+  color:#F0E6CC;border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;white-space:nowrap;
 }
 .hbtn:hover{background:rgba(255,255,255,.28);}
 .hbtn.teal{background:#18B8C9;border-color:#18B8C9;}
@@ -70,8 +76,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .hsel option{color:var(--ink);}
 .save-ind{font-size:12px;color:#9FE8B8;font-weight:700;white-space:nowrap;}
 .save-ind.saving{color:#FFE08A;}
-.stats-line{margin-top:7px;font-size:12.5px;color:#BFD4F2;display:flex;gap:12px;flex-wrap:wrap;}
-.stats-line b{color:#fff;}
+.stats-line{margin-top:7px;font-size:12.5px;color:#C9BB90;display:flex;gap:12px;flex-wrap:wrap;}
+.stats-line b{color:#F3E9C8;}
 
 /* ---------- Alert bar ---------- */
 .alert-bar{
@@ -137,12 +143,13 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 
 /* ---------- Detail ---------- */
 .detail-head{
-  background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);
+  background:linear-gradient(135deg,#1F1E24 0%,#0B0B0D 60%,#171410 100%);
+  border:1px solid rgba(212,175,55,.4);
   border-radius:12px;color:#fff;padding:16px 18px;margin-bottom:14px;
 }
 .dh-row1{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
 .dh-name{font-size:22px;font-weight:800;}
-.dh-agebits{font-size:13px;color:#BFD4F2;}
+.dh-agebits{font-size:13px;color:#C9BB90;}
 .dh-agebits b{color:#fff;}
 .dh-actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
 .dh-actions select{
@@ -280,6 +287,9 @@ body.compact .cal-cell{min-height:78px;}
 
 @media (max-width:900px){
   .detail-cols{grid-template-columns:1fr !important;}
+  .modal .two{grid-template-columns:1fr;}
+  .modal button{white-space:nowrap;}
+  .modal{padding:18px 16px;}
   .grid{grid-template-columns:1fr;}
   .content{padding:0 10px 70px;}
   .header{padding:11px 12px 9px;}
@@ -317,6 +327,16 @@ body.dark .silson-card{background:var(--panel);}
 body.dark .script-body,body.dark .tpl-preview,body.dark .memo-view{background:var(--bg);color:var(--ink);}
 body.dark .tpl-item:hover{background:var(--sky);}
 body.dark .bday-mark{background:#45243a;color:#f0a0c8;}
+.help-sec{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden;}
+.help-sec summary{padding:12px 14px;font-weight:700;font-size:14px;cursor:pointer;background:var(--bg);list-style:none;display:flex;align-items:center;gap:8px;}
+.help-sec summary::-webkit-details-marker{display:none;}
+.help-sec summary::after{content:'▾';margin-left:auto;color:var(--muted);transition:transform .15s;}
+.help-sec[open] summary::after{transform:rotate(180deg);}
+.help-body{padding:12px 14px;font-size:13px;line-height:1.75;}
+.help-body b{color:var(--blue);}
+.help-body .stepnum{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--blue);color:#fff;font-size:11.5px;font-weight:800;align-items:center;justify-content:center;margin-right:6px;flex:none;}
+.help-step{display:flex;align-items:flex-start;margin-bottom:7px;}
+body.dark .help-sec summary{background:var(--bg);}
 #printCard{display:none;}
 @media print{
   #app,.toast,#modalRoot{display:none !important;}
@@ -332,6 +352,7 @@ body.dark .bday-mark{background:#45243a;color:#f0a0c8;}
 <div id="printCard"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
 /* ================= 데이터 ================= */
 const KEY='ins-crm-db-v1';
@@ -366,7 +387,14 @@ let db={
   ],
   credentials:[],
   autoAlerts:{},
-  statusLog:[]
+  statusLog:[],
+  lastModified:0,
+  sync:{url:'',code:'',auto:true,lastSync:0}
+};
+const DEFAULTS={
+  scripts:JSON.parse(JSON.stringify(db.scripts)),
+  templates:JSON.parse(JSON.stringify(db.templates)),
+  insurerContacts:JSON.parse(JSON.stringify(db.insurerContacts))
 };
 let state={
   view:'home',
@@ -401,12 +429,15 @@ async function loadDB(){
       const d=JSON.parse(r.value);
       // 기본값과 병합 (새 필드 보존)
       db={...db,...d};
-      if(!d.scripts)db.scripts=db.scripts;
-      if(!d.insurerContacts)db.insurerContacts=db.insurerContacts;
+      if(!db.scripts||!db.scripts.length)db.scripts=JSON.parse(JSON.stringify(DEFAULTS.scripts));
+      if(!db.templates||!db.templates.length)db.templates=JSON.parse(JSON.stringify(DEFAULTS.templates));
+      if(!db.insurerContacts||!db.insurerContacts.length)db.insurerContacts=JSON.parse(JSON.stringify(DEFAULTS.insurerContacts));
       if(!d.repCodes)db.repCodes=[];
       if(!d.credentials)db.credentials=[];
       if(!d.autoAlerts)db.autoAlerts={};
       if(!d.statusLog)db.statusLog=[];
+      if(!d.sync)db.sync={url:'',code:'',auto:true,lastSync:0};
+      if(db.sync&&db.sync.token&&!db.sync.code){db.sync.code=db.sync.token;delete db.sync.token;}
     }
   }catch(e){}
 }
@@ -416,11 +447,16 @@ function setSaveInd(saving){
   if(saving){el.textContent='저장 중…';el.classList.add('saving');}
   else{el.textContent='✓ 저장됨';el.classList.remove('saving');}
 }
+async function saveLocalOnly(){
+  await storageSet(JSON.stringify(db));
+}
 async function saveDB(){
+  db.lastModified=Date.now();
   setSaveInd(true);
   const ok=await storageSet(JSON.stringify(db));
   if(!ok)toast('저장 실패. 다시 시도해 주세요.');
   setTimeout(()=>setSaveInd(false),350);
+  schedulePush();
 }
 function uid(){return 'x'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
 function esc(s){const d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
@@ -556,7 +592,11 @@ function render(){
   app.innerHTML=`
   <header class="header">
     <div class="header-row">
-      <div class="logo" id="btnLogo" style="cursor:pointer" title="홈 화면으로">CRM</div>
+      <div class="logo" id="btnLogo" title="홈 화면으로">
+        <span class="logo-vip">VIP사업단</span>
+        <span class="logo-crm">CRM</span>
+        <span class="logo-line"><i>◆</i></span>
+      </div>
       <input class="agent-input" id="agentName" placeholder="내 이름" value="${esc(db.agent)}" title="퀵메시지·스크립트의 {설계사명}에 사용됩니다">
       <div class="hbtns">
         <button class="hbtn purple" id="btnScript">📜 SCRIPT</button>
@@ -569,9 +609,12 @@ function render(){
         <button class="hbtn" id="btnGenTable">🏥 실손비교표</button>
         <button class="hbtn" id="btnInsurers">📞 보험사 연락처</button>
         <button class="hbtn gold" id="btnCreds">🔐 내 아이디/비번</button>
+        <button class="hbtn teal" id="btnHelp">❓ 사용법</button>
+        <button class="hbtn teal" id="btnSync">☁ 동기화</button>
         <button class="hbtn" id="btnBackup">💾 백업</button>
         <button class="hbtn" id="btnDark">${db.dark?'☀️':'🌙'}</button>
         <span class="save-ind" id="saveInd">✓ 저장됨</span>
+        <span class="save-ind" id="syncInd" style="color:#8FC1FF">${db.sync&&db.sync.url?"☁":""}</span>
       </div>
     </div>
     <div class="stats-line">
@@ -611,6 +654,34 @@ function render(){
   attach();
 }
 
+function custListHTML(list){
+  return list.length?list.map(x=>{
+    const b=custBirth(x), a=b?calcAges(b):null;
+    return `
+    <div class="cust-item ${x.id===state.activeId?'active':''}" data-cid="${x.id}">
+      <div class="ci-top">
+        <span class="ci-name">${esc(x.name)}</span>
+        ${a?`<span class="ci-age">만 ${a.age}세</span>`:''}
+        ${x.gender?`<span class="badge ${x.gender==='여'?'f':'m'}">${x.gender}</span>`:''}
+        ${x.status?`<span class="badge st-${x.status}">${x.status}</span>`:''}
+      </div>
+      <div class="ci-phone">${esc(x.phone||'연락처 미등록')}</div>
+      ${(x.tags&&x.tags.length)?`<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${x.tags.slice(0,3).map(tg=>`<span class="badge" style="background:var(--purple-soft);color:var(--purple);font-size:10.5px">#${esc(tg)}</span>`).join('')}</div>`:''}
+      ${x.memo?`<div class="ci-memo">📝 ${esc(x.memo.split('\n')[0])}</div>`:''}
+    </div>`;}).join(''):
+    `<div class="empty-list">${db.customers.length?'검색/필터 조건에 맞는 고객이 없습니다.':'등록된 고객이 없습니다.<br>‘+ 새 고객’으로 첫 고객을 추가해 보세요.'}</div>`;
+}
+function bindCustItems(){
+  document.querySelectorAll('[data-cid]').forEach(el=>el.onclick=()=>{state.activeId=el.getAttribute('data-cid');state.mobileDetail=true;render();});
+}
+function refreshCustList(){
+  // 검색 중 전체 화면을 다시 그리지 않고 목록만 갱신 → 한글 조합(IME)이 끊기지 않음
+  const list=filtered();
+  const t=document.getElementById('listCountTxt');
+  if(t)t.textContent='표시 '+list.length+'명 / 전체 '+db.customers.length+'명';
+  const box=document.getElementById('custListBox');
+  if(box){box.innerHTML=custListHTML(list);bindCustItems();}
+}
 function renderCustomers(){
   const list=filtered();
   const c=active();
@@ -640,25 +711,9 @@ function renderCustomers(){
           <option value="created" ${state.sort==='created'?'selected':''}>최근 등록순</option>
         </select>
       </div>
-      <p class="list-count" style="display:flex;align-items:center;gap:8px">표시 ${list.length}명 / 전체 ${db.customers.length}명
+      <p class="list-count" style="display:flex;align-items:center;gap:8px"><span id="listCountTxt">표시 ${list.length}명 / 전체 ${db.customers.length}명</span>
         <button class="mini-red" id="btnDelAll" style="margin-left:auto;font-size:11.5px">🗑 전체삭제</button></p>
-      <div class="cust-list">
-        ${list.length?list.map(x=>{
-          const b=custBirth(x), a=b?calcAges(b):null;
-          return `
-          <div class="cust-item ${x.id===state.activeId?'active':''}" data-cid="${x.id}">
-            <div class="ci-top">
-              <span class="ci-name">${esc(x.name)}</span>
-              ${a?`<span class="ci-age">만 ${a.age}세</span>`:''}
-              ${x.gender?`<span class="badge ${x.gender==='여'?'f':'m'}">${x.gender}</span>`:''}
-              ${x.status?`<span class="badge st-${x.status}">${x.status}</span>`:''}
-            </div>
-            <div class="ci-phone">${esc(x.phone||'연락처 미등록')}</div>
-            ${(x.tags&&x.tags.length)?`<div style="margin-top:4px;display:flex;gap:4px;flex-wrap:wrap">${x.tags.slice(0,3).map(tg=>`<span class="badge" style="background:var(--purple-soft);color:var(--purple);font-size:10.5px">#${esc(tg)}</span>`).join('')}</div>`:''}
-            ${x.memo?`<div class="ci-memo">📝 ${esc(x.memo.split('\n')[0])}</div>`:''}
-          </div>`;}).join(''):
-          `<div class="empty-list">${db.customers.length?'검색/필터 조건에 맞는 고객이 없습니다.':'등록된 고객이 없습니다.<br>‘+ 새 고객’으로 첫 고객을 추가해 보세요.'}</div>`}
-      </div>
+      <div class="cust-list" id="custListBox">${custListHTML(list)}</div>
     </div>
 
     <div class="detail-panel">
@@ -783,18 +838,25 @@ function renderDetail(c){
   </div>
 
   <div class="section">
-    <h3>📋 보험금 청구 <span style="margin-left:auto;font-size:12px;color:var(--muted)">진행 중 ${claims.filter(q=>q.status!=='지급완료').length}건 / 전체 ${claims.length}건</span></h3>
-    ${claims.length?claims.map(q=>`
-      <div style="display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap;font-size:13px">
-        <span class="hist-date">${esc(q.date||'')}</span>
-        <span style="font-weight:600;flex:1;min-width:130px">${esc(q.item||'')}${q.insurer?` <span style="color:var(--muted);font-weight:400">· ${esc(q.insurer)}</span>`:''}${q.amount?` <span class="mono" style="color:var(--blue)">${(+q.amount).toLocaleString()}원</span>`:''}</span>
-        <select data-claim-st="${q.id}" style="padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:${q.status==='지급완료'?'var(--green-soft)':'var(--gold-soft)'};color:var(--ink);font-size:12px;font-weight:700">
-          ${['접수','서류 준비','심사 중','지급완료'].map(s=>`<option ${q.status===s?'selected':''}>${s}</option>`).join('')}
-        </select>
-        <button class="mini" data-claim-edit="${q.id}">수정</button>
-        <button class="x-del" data-claim-del="${q.id}">×</button>
-      </div>`).join(''):'<div class="silson-empty">등록된 청구 건이 없습니다. 청구를 챙겨주는 설계사가 소개를 받습니다.</div>'}
-    <div class="silson-form"><button class="btn-dark" id="btnAddClaim">+ 청구 등록</button></div>
+    <h3>📄 보장분석 ${c.bojang?`<span style="margin-left:auto;font-size:12px;color:var(--muted)">등록일 ${esc(c.bojang.date)}</span>`:''}</h3>
+    ${c.bojang?`
+    <div class="silson-grid">
+      <div class="silson-card"><div class="k">정상계약</div><div class="v">${c.bojang.contractCount||(c.bojang.contracts||[]).length}건</div><div class="sub">보장분석 PDF 기준</div></div>
+      <div class="silson-card o"><div class="k">월 보험료</div><div class="v" style="font-size:15px">${c.bojang.premium?(+c.bojang.premium).toLocaleString()+'원':'—'}</div></div>
+      <div class="silson-card r"><div class="k">부족 / 미가입</div><div class="v" style="color:var(--red)">${c.bojang.counts.부족}개 / ${c.bojang.counts.미가입}개</div><div class="sub">보완 상담 포인트</div></div>
+      <div class="silson-card g"><div class="k">충분</div><div class="v" style="color:var(--green)">${c.bojang.counts.충분}개</div></div>
+    </div>
+    <div class="silson-form">
+      <button class="btn-primary" id="btnBojangDetail" style="background:var(--navy)">🔍 진단 상세 보기</button>
+      <label class="btn-dark" style="cursor:pointer;display:inline-flex;align-items:center">📄 PDF 다시 등록<input type="file" id="bojangFile" accept=".pdf" style="display:none"></label>
+      <button class="btn-cancel" id="btnBojangDel">삭제</button>
+      <span id="bojangStatus" style="font-size:12.5px;color:var(--muted);align-self:center"></span>
+    </div>`
+    :`<div class="silson-empty">보험사 보장분석 PDF(신용정보원 기반 제안서)를 등록하면 담보별 부족/미가입 진단, 보유계약 목록, 실손 정보가 자동으로 분석되어 반영됩니다.<br>파일은 이 기기 안에서만 처리되며 외부로 전송되지 않습니다.</div>
+    <div class="silson-form">
+      <label class="btn-dark" style="cursor:pointer;display:inline-flex;align-items:center">📄 보장분석 PDF 등록<input type="file" id="bojangFile" accept=".pdf" style="display:none"></label>
+      <span id="bojangStatus" style="font-size:12.5px;color:var(--muted);align-self:center"></span>
+    </div>`}
   </div>
 
   <div class="section">
@@ -928,13 +990,15 @@ function attach(){
   const gt2=$('btnGenTable2');if(gt2)gt2.onclick=openGenTable;
   const ic=$('btnInsurers');if(ic)ic.onclick=openInsurers;
   const cr=$('btnCreds');if(cr)cr.onclick=openCreds;
+  const hp=$('btnHelp');if(hp)hp.onclick=openHelp;
+  const sy=$('btnSync');if(sy)sy.onclick=openSyncSetup;
   const bk=$('btnBackup');if(bk)bk.onclick=openBackup;
   const dk=$('btnDark');if(dk)dk.onclick=async()=>{db.dark=!db.dark;await saveDB();render();};
   const rp=$('btnReport');if(rp)rp.onclick=()=>openReport(0);
 
   if(state.view==='customers'){
     const si=$('searchInput');
-    if(si)si.oninput=e=>{state.search=e.target.value;render();const el=$('searchInput');if(el){el.focus();el.selectionStart=el.selectionEnd=el.value.length;}};
+    if(si)si.oninput=e=>{state.search=e.target.value;refreshCustList();};
     document.querySelectorAll('[data-gender]').forEach(b=>b.onclick=()=>{state.gender=b.getAttribute('data-gender');render();});
     document.querySelectorAll('[data-status]').forEach(b=>b.onclick=()=>{state.status=b.getAttribute('data-status');render();});
     document.querySelectorAll('[data-tag]').forEach(b=>b.onclick=()=>{const tg=b.getAttribute('data-tag');state.tag=state.tag===tg?null:tg;render();});
@@ -942,7 +1006,7 @@ function attach(){
     const nc=$('btnNewCust');if(nc)nc.onclick=()=>openCustModal(null);
     const da=$('btnDelAll');if(da)da.onclick=openDeleteAll;
     const xl=$('btnExcel');if(xl)xl.onclick=openExcelImport;
-    document.querySelectorAll('[data-cid]').forEach(el=>el.onclick=()=>{state.activeId=el.getAttribute('data-cid');state.mobileDetail=true;render();});
+    bindCustItems();
     const back=$('btnBack');if(back)back.onclick=()=>{state.mobileDetail=false;render();};
 
     const c=active();
@@ -978,7 +1042,12 @@ function attach(){
         delete c.carInsurer;delete c.carNo;delete c.carEnd;
         c.updatedAt=Date.now();await saveDB();render();
       };
-      const ac=$('btnAddClaim');if(ac)ac.onclick=()=>openClaimModal(c,null);
+      const bf=$('bojangFile');if(bf)bf.onchange=e=>{const f=e.target.files[0];if(f)parseBojangPDF(f,c);e.target.value='';};
+      const bjd=$('btnBojangDetail');if(bjd)bjd.onclick=()=>openBojangDetail(c);
+      const bjx=$('btnBojangDel');if(bjx)bjx.onclick=async()=>{
+        if(!confirm('보장분석 데이터를 삭제할까요? (이미 반영된 보유계약·실손 정보는 유지됩니다)'))return;
+        delete c.bojang;c.updatedAt=Date.now();await saveDB();render();
+      };
       document.querySelectorAll('[data-claim-edit]').forEach(bt=>bt.onclick=()=>{const q=(c.claims||[]).find(x=>x.id===bt.getAttribute('data-claim-edit'));if(q)openClaimModal(c,q);});
       document.querySelectorAll('[data-claim-del]').forEach(bt=>bt.onclick=async()=>{
         if(!confirm('이 청구 건을 삭제할까요?'))return;
@@ -1260,7 +1329,7 @@ function openBirthdays(){
     if(!c)return;
     const txt=`${c.name} 고객님, 생신 진심으로 축하드립니다! 🎂\n늘 건강과 행복이 가득하시길 바랍니다.\n- 담당 설계사 ${db.agent||''} 드림`;
     const phoneClean=(c.phone||'').replace(/[^0-9]/g,'');
-    location.href='sms:'+phoneClean+'?body='+encodeURIComponent(txt);
+    location.href=smsHref(phoneClean,txt);
   });
 }
 
@@ -1523,6 +1592,180 @@ function openClaimModal(c,q){
   };
 }
 
+
+/* ================= 📄 보장분석 (PDF 자동 분석) ================= */
+const BOJANG_ITEMS=[
+ ['사망/장해','상해사망'],['사망/장해','질병사망'],['사망/장해','상해80%미만후유장해'],['사망/장해','질병80%미만후유장해'],
+ ['치매/간병','장기요양간병비'],['치매/간병','경증치매진단'],['치매/간병','간병인/간호간병상해일당'],['치매/간병','간병인/간호간병질병일당'],
+ ['암 진단','일반암'],['암 진단','유사암'],['암 진단','고액암'],['암 진단','고액(표적)항암치료비'],
+ ['뇌/심장','뇌혈관질환'],['뇌/심장','뇌졸중'],['뇌/심장','뇌출혈'],['뇌/심장','허혈성심장질환'],['뇌/심장','급성심근경색증'],
+ ['실손의료비','상해입원의료비'],['실손의료비','상해통원의료비'],['실손의료비','질병입원의료비'],['실손의료비','질병통원의료비'],['실손의료비','3대비급여실손'],
+ ['수술/입원','상해수술비'],['수술/입원','질병수술비'],['수술/입원','암수술비'],['수술/입원','뇌혈관질환수술비'],['수술/입원','허혈성심장질환수술비'],['수술/입원','상해입원일당'],['수술/입원','질병입원일당'],
+ ['운전자/기타','벌금(대인/스쿨존/대물)'],['운전자/기타','교통사고처리지원금'],['운전자/기타','변호사선임비용'],['운전자/기타','자동차사고부상'],['운전자/기타','골절진단비'],['운전자/기타','보철치료비'],['운전자/기타','가족/일상/자녀배상'],['운전자/기타','화재벌금']
+];
+function escReg(s){return s.replace(/[.*+?^${}()|[\]\\\/]/g,'\\$&');}
+function manVal(s){
+  if(!s)return 0;
+  s=String(s).replace(/\s/g,'').replace(/,/g,'');
+  let sign=1;
+  if(s.startsWith('-')){sign=-1;s=s.slice(1);}
+  if(s.startsWith('+'))s=s.slice(1);
+  let n=0;
+  const e=s.match(/(\d+)억/);if(e)n+=+e[1]*10000;
+  const m=s.match(/(\d+)만/);if(m)n+=+m[1];
+  if(!e&&!m&&/^\d+$/.test(s))n=+s;
+  return sign*n;
+}
+function manFmt(n){
+  if(!n)return '0';
+  const sign=n<0?'-':'';n=Math.abs(n);
+  const e=Math.floor(n/10000),m=n%10000;
+  return sign+(e?e+'억'+(m?' ':''):'')+(m?m.toLocaleString()+'만':'');
+}
+function parseBojangText(text){
+  const AMT='((?:\\d+억\\s*(?:[\\d,]+만)?)|(?:[\\d,]+만)|0)';
+  const DIFF='([+\\-]?\\s*(?:(?:\\d+억\\s*(?:[\\d,]+만)?)|(?:[\\d,]+만)|0))';
+  // 진단 영역 슬라이스
+  let i1=text.indexOf('전체 담보 진단 현황');
+  let region=i1>=0?text.slice(i1,(text.indexOf('상품별 진단현황',i1)+1||i1+7000)):text;
+  const diagnosis=[];
+  BOJANG_ITEMS.forEach(([cat,name])=>{
+    const re=new RegExp(escReg(name)+'\\s+'+AMT+'\\s+'+AMT+'\\s+'+DIFF+'\\s*(부족|미가입|충분)');
+    let m=region.match(re)||text.match(re);
+    if(m)diagnosis.push({cat,name,rec:manVal(m[1]),cur:manVal(m[2]),diff:manVal(m[3]),status:m[4]});
+  });
+  // 계약 리스트 (전체 텍스트 대상 — 해지 건은 상태 단어가 껴서 자연 제외됨)
+  let contracts=[];
+  const norm=text.replace(/\s+/g,' ');
+  const cre=/(?:^|\s)(\d)\s+((?:KB|메리츠|흥국|현대|DB|삼성|한화|롯데|MG|NH|라이나|AIG|악사|캐롯|하나|농협)[가-힣A-Z()\s]{0,10}?(?:손\s?보|화\s?재|해\s?상|생\s?명|손해\s?보험))\s+(.{3,80}?)\s+(\d{4}-\d{2}-\d{2})\s+(?:(월납|연납|일시납)\s+)?(?:(\d+)년\s+)?(\d+)세\s+((?:[\d,]+\s*원)|보험료\s*미제공)/g;
+  let mm;
+  while((mm=cre.exec(norm))!==null){
+    const premTxt=mm[8].replace(/\s/g,'');
+    contracts.push({
+      no:+mm[1],insurer:mm[2].replace(/\s/g,''),product:mm[3].trim(),
+      joinDate:mm[4],pay:mm[5]||'',years:mm[6]||'',matAge:mm[7]+'세',
+      premium:premTxt.includes('미제공')?0:+premTxt.replace(/[^0-9]/g,''),
+      premiumTxt:premTxt
+    });
+  }
+  // 요약 (라벨 기반 → 실패 시 숫자 나열 폴백: '5 0 0 4 1 111,858 2026-..')
+  let pm=text.match(/월\s*보험료(?:\s*합계)?\s*(\d[\d,]*)\s*원/);
+  let cc=text.match(/정상계약\s*(\d+)\s*건/);
+  if(!pm||!cc){
+    const fb=text.replace(/\s+/g,' ').match(/(?:^|\s)(\d{1,2})\s+(?:\d{1,2}\s+){2,5}(\d{1,3}(?:,\d{3})+)\s+\d{4}-\d{2}-\d{2}/);
+    if(fb){if(!cc)cc=[null,fb[1]];if(!pm)pm=[null,fb[2]];}
+  }
+  const counts={부족:0,미가입:0,충분:0};
+  diagnosis.forEach(d=>counts[d.status]++);
+  // 실손 계약 탐지
+  const silsonC=contracts.find(k=>k.product.includes('실손'));
+  return {
+    diagnosis,contracts,counts,
+    premium:pm?+pm[1].replace(/,/g,''):0,
+    contractCount:cc?+cc[1]:contracts.length,
+    silson:silsonC?{insurer:silsonC.insurer,joinDate:silsonC.joinDate}:null
+  };
+}
+async function parseBojangPDF(file,c){
+  const st=document.getElementById('bojangStatus');
+  const say=t=>{if(st)st.textContent=t;};
+  try{
+    if(typeof pdfjsLib==='undefined'){toast('PDF 분석 모듈을 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.');return;}
+    say('PDF 읽는 중…');
+    pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    const buf=await file.arrayBuffer();
+    const pdf=await pdfjsLib.getDocument({data:buf}).promise;
+    let text='';
+    for(let p=1;p<=pdf.numPages;p++){
+      const pg=await pdf.getPage(p);
+      const tc=await pg.getTextContent();
+      text+=tc.items.map(i=>i.str).join(' ')+'\n';
+      say('분석 중… ('+p+'/'+pdf.numPages+'쪽)');
+    }
+    const res=parseBojangText(text);
+    if(!res.diagnosis.length&&!res.contracts.length){
+      toast('이 PDF에서 보장분석 데이터를 찾지 못했습니다. 신용정보원 기반 보장분석 제안서인지 확인해 주세요.');
+      say('');return;
+    }
+    c.bojang={date:todayStr(),premium:res.premium,contractCount:res.contractCount,
+      contracts:res.contracts,diagnosis:res.diagnosis,counts:res.counts};
+    const extras=[];
+    if(res.silson&&!c.silsonJoin){
+      c.silsonJoin=res.silson.joinDate;c.silsonInsurer=res.silson.insurer;
+      extras.push('실손 세대 자동판정');
+    }
+    if(res.contracts.length){
+      if(!c.policies)c.policies=[];
+      let added=0;
+      res.contracts.forEach(k=>{
+        const ex=c.policies.find(p=>(p.product&&p.product.replace(/\s/g,'')===k.product.replace(/\s/g,''))||(p.joinDate===k.joinDate&&p.insurer===k.insurer));
+        if(!ex){c.policies.push({id:uid(),insurer:k.insurer,product:k.product,premium:k.premium,joinDate:k.joinDate,endDate:''});added++;}
+      });
+      if(added)extras.push('보유계약 '+added+'건 자동등록');
+    }
+    c.updatedAt=Date.now();
+    await saveDB();render();
+    toast('📄 보장분석 등록 완료! 진단 '+res.diagnosis.length+'개 항목'+(extras.length?' · '+extras.join(' · '):''));
+  }catch(err){
+    toast('PDF 분석 중 오류가 발생했습니다.');say('');
+  }
+}
+function openBojangDetail(c){
+  const b=c.bojang;if(!b)return;
+  const stBadge=s=>s==='부족'?'<span class="badge" style="background:var(--red-soft);color:var(--red)">부족</span>'
+    :s==='미가입'?'<span class="badge" style="background:#EEF0F4;color:var(--muted)">미가입</span>'
+    :'<span class="badge" style="background:var(--sky);color:var(--blue)">충분</span>';
+  let lastCat='';
+  const rows=b.diagnosis.map(d=>{
+    const catCell=d.cat!==lastCat?d.cat:'';lastCat=d.cat;
+    return `<tr>
+      <td style="background:var(--bg);font-weight:700;text-align:center">${catCell}</td>
+      <td style="background:#fff;text-align:left;padding-left:10px;font-weight:600">${esc(d.name)}</td>
+      <td class="mono">${manFmt(d.rec)}</td>
+      <td class="mono">${manFmt(d.cur)}</td>
+      <td class="mono" style="color:${d.diff<0?'var(--red)':d.diff>0?'var(--green)':'var(--muted)'};font-weight:700">${d.diff>0?'+':''}${manFmt(d.diff)}</td>
+      <td>${stBadge(d.status)}</td>
+    </tr>`;
+  }).join('');
+  const lack=b.diagnosis.filter(d=>d.status==='부족');
+  const none=b.diagnosis.filter(d=>d.status==='미가입');
+  const m=modal(`
+  <div class="modal wide">
+    <h3>📄 ${esc(c.name)} 고객님 보장분석 진단 <span style="margin-left:auto;font-size:12px;color:var(--muted)">등록일 ${esc(b.date)}</span></h3>
+    <div class="silson-grid" style="margin-bottom:14px">
+      <div class="silson-card"><div class="k">정상계약</div><div class="v">${b.contractCount}건</div></div>
+      <div class="silson-card o"><div class="k">월 보험료</div><div class="v" style="font-size:15px">${b.premium?(+b.premium).toLocaleString()+'원':'—'}</div></div>
+      <div class="silson-card r"><div class="k">부족</div><div class="v" style="color:var(--red)">${b.counts.부족}개</div></div>
+      <div class="silson-card" style="border-top-color:var(--muted)"><div class="k">미가입</div><div class="v" style="color:var(--muted)">${b.counts.미가입}개</div></div>
+      <div class="silson-card g"><div class="k">충분</div><div class="v" style="color:var(--green)">${b.counts.충분}개</div></div>
+    </div>
+    ${(lack.length||none.length)?`<div class="gen-note">💡 <b>상담 포인트</b> — 부족: ${lack.map(d=>d.name).join(', ')||'없음'}${none.length?` ｜ 미가입: ${none.slice(0,8).map(d=>d.name).join(', ')}${none.length>8?' 외 '+(none.length-8)+'개':''}`:''}</div>`:''}
+    <div class="table-wrap">
+      <table class="gen-table" style="min-width:640px">
+        <thead><tr>${['분류','담보명','권장금액','가입금액','과부족','상태'].map(h=>`<th style="background:var(--navy)">${h}</th>`).join('')}</tr></thead>
+        <tbody>${rows||'<tr><td colspan="6">진단 데이터가 없습니다.</td></tr>'}</tbody>
+      </table>
+    </div>
+    ${b.contracts&&b.contracts.length?`
+    <h3 style="margin-top:16px;font-size:15px">📑 분석된 보유계약 (${b.contracts.length}건)</h3>
+    <div class="table-wrap">
+      <table class="gen-table" style="min-width:560px;font-size:12px">
+        <thead><tr>${['보험사','상품명','계약일','납입/만기','월보험료'].map(h=>`<th style="background:var(--navy)">${h}</th>`).join('')}</tr></thead>
+        <tbody>${b.contracts.map(k=>`<tr>
+          <td style="background:#fff;text-align:center;font-weight:700">${esc(k.insurer)}</td>
+          <td style="text-align:left;padding-left:8px">${esc(k.product)}</td>
+          <td class="mono">${esc(k.joinDate)}</td>
+          <td class="mono">${esc((k.pay?k.pay+'/':'')+(k.years?k.years+'년납/':'')+k.matAge)}</td>
+          <td class="mono">${k.premium?k.premium.toLocaleString()+'원':'미제공'}</td>
+        </tr>`).join('')}</tbody>
+      </table>
+    </div>`:''}
+    <div class="gen-note" style="margin-top:12px">※ 신용정보원 집적 계약 정보 기반 참고용 자료입니다. 정확한 보장 내용은 가입 상품의 약관을 확인하세요.</div>
+    <div class="modal-actions"><button class="btn-primary" id="mClose">닫기</button></div>
+  </div>`);
+  document.getElementById('mClose').onclick=m.close;
+}
+
 /* ================= ⚙️ 문자 템플릿 관리 ================= */
 function openTemplateManager(){
   const m=modal(`
@@ -1613,6 +1856,292 @@ function openReport(off){
   document.getElementById('rpPrev').onclick=()=>{m.close();openReport(off-1);};
   const rn=document.getElementById('rpNext');
   if(rn&&off<0)rn.onclick=()=>{m.close();openReport(off+1);};
+}
+
+
+
+/* ================= ☁ 팀 동기화 (공용 서버 + 개인 코드, 암호화) ================= */
+function setSyncInd(t){const el=document.getElementById('syncInd');if(el)el.textContent=t;}
+function stripSync(d){const {sync,...rest}=d;return rest;}
+function ensureDefaults(){
+  if(!db.scripts||!db.scripts.length)db.scripts=JSON.parse(JSON.stringify(DEFAULTS.scripts));
+  if(!db.templates||!db.templates.length)db.templates=JSON.parse(JSON.stringify(DEFAULTS.templates));
+  if(!db.insurerContacts||!db.insurerContacts.length)db.insurerContacts=JSON.parse(JSON.stringify(DEFAULTS.insurerContacts));
+  if(!db.repCodes)db.repCodes=[];if(!db.credentials)db.credentials=[];
+  if(!db.autoAlerts)db.autoAlerts={};if(!db.statusLog)db.statusLog=[];
+  if(!db.events)db.events=[];if(!db.customers)db.customers=[];
+}
+/* --- 암호화: 내 코드에서 키 유도 → AES-GCM. 서버(시트)에는 암호문만 저장됨 --- */
+async function sha256hex(s){
+  const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+}
+async function deriveKey(code){
+  const mat=await crypto.subtle.importKey('raw',new TextEncoder().encode(code),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt:new TextEncoder().encode('crm-sync-v1'),iterations:100000,hash:'SHA-256'},mat,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+async function encryptStr(code,plain){
+  const key=await deriveKey(code);
+  const iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(plain)));
+  const buf=new Uint8Array(iv.length+ct.length);buf.set(iv);buf.set(ct,12);
+  let bin='';for(let i=0;i<buf.length;i++)bin+=String.fromCharCode(buf[i]);
+  return btoa(bin);
+}
+async function decryptStr(code,b64){
+  const raw=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+  const key=await deriveKey(code);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:raw.slice(0,12)},key,raw.slice(12));
+  return new TextDecoder().decode(pt);
+}
+function makeSyncCode(){
+  const chars='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+  const arr=crypto.getRandomValues(new Uint8Array(12));
+  let s='';for(let i=0;i<12;i++){s+=chars[arr[i]%chars.length];if(i%4===3&&i<11)s+='-';}
+  return s;
+}
+function smsHref(phone,body){
+  // 아이폰은 sms:번호&body= , 안드로이드는 sms:번호?body= 형식을 사용
+  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
+  return 'sms:'+phone+(isIOS?'&':'?')+'body='+encodeURIComponent(body);
+}
+let pushTimer=null;
+function schedulePush(){
+  if(!db.sync||!db.sync.url||!db.sync.code||!db.sync.auto)return;
+  clearTimeout(pushTimer);
+  pushTimer=setTimeout(()=>pushCloud(false),2500);
+}
+function withTimeout(p,ms){return Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),ms))]);}
+async function pushCloud(manual){
+  const s=db.sync;
+  if(!s||!s.url||!s.code){if(manual)toast('먼저 ☁동기화에서 서버 주소와 내 코드를 설정해 주세요.');return false;}
+  try{
+    setSyncInd('☁↑');
+    const id=await sha256hex(s.code);
+    const enc=await encryptStr(s.code,JSON.stringify(stripSync(db)));
+    const payload=JSON.stringify({id,updatedAt:db.lastModified||Date.now(),data:enc});
+    const r=await withTimeout(fetch(s.url,{method:'POST',body:payload}),20000);
+    const j=await r.json();
+    if(!j||!j.ok)throw 0;
+    s.lastSync=Date.now();
+    await saveLocalOnly();
+    setSyncInd('☁✓');
+    if(manual)toast('클라우드에 업로드했습니다. (고객 '+db.customers.length+'명, 암호화됨)');
+    return true;
+  }catch(e){
+    setSyncInd('☁!');
+    if(manual)toast('업로드 실패. 서버 주소와 인터넷 연결을 확인해 주세요.');
+    return false;
+  }
+}
+async function pullCloud(manual){
+  const s=db.sync;
+  if(!s||!s.url||!s.code){if(manual)toast('먼저 ☁동기화에서 서버 주소와 내 코드를 설정해 주세요.');return null;}
+  try{
+    setSyncInd('☁↓');
+    const id=await sha256hex(s.code);
+    const url=s.url+(s.url.includes('?')?'&':'?')+'id='+id;
+    const r=await withTimeout(fetch(url),20000);
+    const j=await r.json();
+    if(j&&typeof j.data==='string'&&j.data.length){
+      let plain;
+      try{plain=await decryptStr(s.code,j.data);}
+      catch(de){setSyncInd('☁!');if(manual)toast('코드가 올바르지 않습니다. PC와 동일한 코드인지 확인해 주세요.');return null;}
+      const cloud=JSON.parse(plain);
+      const keep=db.sync;
+      db={...db,...cloud};
+      db.sync=keep;
+      db.lastModified=j.updatedAt||Date.now();
+      ensureDefaults();
+      keep.lastSync=Date.now();
+      await saveLocalOnly();
+      setSyncInd('☁✓');
+      if(manual){render();toast('클라우드 데이터를 불러왔습니다. (고객 '+db.customers.length+'명)');}
+      return j.updatedAt||0;
+    }
+    setSyncInd('☁');
+    if(manual)toast('이 코드로 저장된 데이터가 아직 없습니다. 데이터가 있는 기기에서 먼저 업로드해 주세요.');
+    return 0;
+  }catch(e){
+    setSyncInd('☁!');
+    if(manual)toast('다운로드 실패. 서버 주소를 확인해 주세요.');
+    return null;
+  }
+}
+async function autoSyncOnLoad(){
+  const s=db.sync;
+  if(!s||!s.url||!s.code||!s.auto)return;
+  try{
+    setSyncInd('☁…');
+    const id=await sha256hex(s.code);
+    const url=s.url+(s.url.includes('?')?'&':'?')+'mode=meta&id='+id;
+    const r=await withTimeout(fetch(url),8000);
+    const j=await r.json();
+    const cloudAt=+((j&&j.updatedAt)||0);
+    const localAt=+(db.lastModified||0);
+    if(cloudAt>localAt){const ok=await pullCloud(false);if(ok!==null)toast('☁ 다른 기기의 최신 데이터를 불러왔습니다.');}
+    else if(localAt>cloudAt){pushCloud(false);}
+    else setSyncInd('☁✓');
+  }catch(e){setSyncInd('☁!');}
+}
+function openSyncSetup(){
+  const s=db.sync||{url:'',code:'',auto:true};
+  const m=modal(`
+  <div class="modal mid">
+    <h3>☁ PC↔휴대폰 동기화</h3>
+    <div class="gen-note">💡 <b>이렇게 하면 됩니다</b><br>
+    ① 센터장이 공유해 준 <b>서버 주소</b>를 붙여넣고<br>
+    ② <b>[내 코드 만들기]</b>를 눌러 나만의 코드를 만든 뒤 <b>설정 저장 → ⬆업로드</b><br>
+    ③ 휴대폰(또는 다른 PC)에서 <b>같은 주소와 같은 코드</b>를 입력하고 <b>⬇다운로드</b><br>
+    이후에는 자동으로 두 기기가 맞춰집니다. 코드는 비밀번호이자 암호화 열쇠라서, 같은 서버를 써도 <b>다른 사람은 내 데이터를 절대 볼 수 없습니다.</b></div>
+    <div class="field"><label>서버 주소 (센터장이 공유)</label>
+      <input id="syUrl" value="${esc(s.url||'')}" placeholder="https://script.google.com/macros/s/..../exec"></div>
+    <div class="field"><label>내 동기화 코드 (모든 기기에 동일하게)</label>
+      <div style="display:flex;gap:8px">
+        <input id="syCode" value="${esc(s.code||'')}" placeholder="예: K7FP-M2XQ-9RTW" style="flex:1;font-family:'Roboto Mono',monospace">
+        <button class="btn-primary" id="syGen" style="white-space:nowrap">🎲 내 코드 만들기</button>
+      </div>
+      <div class="hint">⚠️ 코드를 잊으면 클라우드 데이터를 복구할 수 없습니다. 안전한 곳에 적어두세요!</div></div>
+    <div class="field"><label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+      <input type="checkbox" id="syAuto" ${s.auto?'checked':''} style="width:auto"> 자동 동기화 (앱 열 때 최신본 확인 + 저장 시 자동 업로드)</label></div>
+    ${s.lastSync?`<div class="hint">마지막 동기화: ${new Date(s.lastSync).toLocaleString('ko-KR')}</div>`:''}
+    <div class="modal-actions" style="flex-wrap:wrap;justify-content:flex-start">
+      <button class="btn-primary" id="syPush">⬆ 지금 업로드 (이 기기 → 클라우드)</button>
+      <button class="btn-primary" id="syPull" style="background:var(--green)">⬇ 지금 다운로드 (클라우드 → 이 기기)</button>
+    </div>
+    <div class="warn-box" style="margin-top:10px">⚠️ 다운로드는 이 기기의 데이터를 클라우드 내용으로 덮어씁니다. 두 기기에서 동시에 수정하면 나중에 저장한 쪽이 남습니다.</div>
+    <details class="help-sec" style="margin-top:10px">
+      <summary>👑 센터장용: 팀 서버 만들기 (전체에서 딱 1명, 1회, 3단계)</summary>
+      <div class="help-body">
+        <div class="help-step"><span class="stepnum">1</span><span>sheets.google.com → 새 스프레드시트 → 메뉴 <b>확장 프로그램 → Apps Script</b></span></div>
+        <div class="help-step"><span class="stepnum">2</span><span>기존 코드를 지우고 <b>동기화_AppsScript.txt</b> 내용을 통째로 붙여넣기 → 저장(💾). <b>수정할 것 없음!</b></span></div>
+        <div class="help-step"><span class="stepnum">3</span><span><b>배포 → 새 배포 → 웹 앱</b> → 액세스: <b>"모든 사용자"</b> → 배포 → 나온 URL을 팀 카톡방에 공유</span></div>
+        <div class="help-body" style="padding:6px 0 0">각자의 데이터는 각자의 코드로 암호화되어 저장되므로, 시트 주인도 내용을 볼 수 없습니다.</div>
+      </div>
+    </details>
+    <div class="modal-actions">
+      <button class="btn-cancel" id="mClose">닫기</button>
+      <button class="btn-primary" id="sySave">설정 저장</button>
+    </div>
+  </div>`);
+  document.getElementById('mClose').onclick=m.close;
+  document.getElementById('syGen').onclick=()=>{
+    const el=document.getElementById('syCode');
+    if(el.value.trim()&&!confirm('이미 코드가 있습니다. 새로 만들면 기존 클라우드 데이터와 연결이 끊어집니다. 계속할까요?'))return;
+    el.value=makeSyncCode();
+    toast('새 코드가 생성되었습니다. 꼭 적어두세요!');
+  };
+  function grab(){
+    if(!db.sync)db.sync={};
+    db.sync.url=document.getElementById('syUrl').value.trim();
+    db.sync.code=document.getElementById('syCode').value.trim().toUpperCase();
+    db.sync.auto=document.getElementById('syAuto').checked;
+  }
+  document.getElementById('sySave').onclick=async()=>{
+    grab();await saveLocalOnly();render();m.close();toast('동기화 설정을 저장했습니다.');
+  };
+  document.getElementById('syPush').onclick=async()=>{grab();await saveLocalOnly();await pushCloud(true);};
+  document.getElementById('syPull').onclick=async()=>{
+    grab();await saveLocalOnly();
+    if(!confirm('클라우드 데이터로 이 기기의 데이터를 덮어쓸까요?'))return;
+    await pullCloud(true);
+  };
+}
+
+/* ================= ❓ 사용법 ================= */
+function openHelp(){
+  const m=modal(`
+  <div class="modal mid">
+    <h3>❓ 사용 설명서</h3>
+    <div class="gen-note">보험설계사를 위한 고객관리 프로그램입니다. 궁금한 항목을 눌러 펼쳐보세요.</div>
+
+    <details class="help-sec" open>
+      <summary>🚀 처음 시작하기</summary>
+      <div class="help-body">
+        <div class="help-step"><span class="stepnum">1</span><span>상단의 <b>내 이름</b> 칸에 본인 이름을 입력하세요. 문자·스크립트에 자동으로 들어갑니다.</span></div>
+        <div class="help-step"><span class="stepnum">2</span><span>고객 등록은 세 가지 방법: <b>+ 새 고객</b>으로 한 명씩, <b>📗 엑셀</b>로 명단 한 번에, 또는 <b>💾 백업 → 가져오기</b>로 기존 데이터 복원.</span></div>
+        <div class="help-step"><span class="stepnum">3</span><span>주민번호를 입력하면 성별·만나이·보험나이·상령일·생일이 <b>자동 계산</b>됩니다.</span></div>
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>📱 홈 화면에 앱으로 설치</summary>
+      <div class="help-body">
+        <b>갤럭시(안드로이드)</b>: 크롬으로 이 주소 접속 → 오른쪽 위 ⋮ 메뉴 → <b>"홈 화면에 추가"</b><br>
+        <b>아이폰</b>: 사파리로 접속 → 하단 공유 버튼(⬆️) → <b>"홈 화면에 추가"</b><br>
+        설치하면 주소창 없는 전체화면 앱으로 실행됩니다.
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>💾 데이터 저장 방식 (중요!)</summary>
+      <div class="help-body">
+        모든 데이터는 <b>지금 이 기기에만</b> 저장됩니다. 서버에 올라가지 않아 안전하지만, 반대로:<br>
+        · PC와 휴대폰의 데이터는 <b>서로 자동 연동되지 않습니다</b> → 💾백업 파일로 옮기세요<br>
+        · 브라우저 데이터를 지우면 사라질 수 있습니다 → <b>주기적 백업 필수!</b><br>
+        · 같은 주소를 쓰는 동료와도 데이터가 섞이지 않습니다 (각자 자기 것만 보임)
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>🏠 오늘 브리핑 화면</summary>
+      <div class="help-body">
+        앱을 열면 오늘 챙길 것들이 카드로 요약됩니다: 오늘 일정, 이번 달 생일, 실손 재가입 임박, 부재중 재연락, 장기 미접촉(90일+), 만기 임박 계약, 자동차 만기, 진행 중 청구. <b>이름을 누르면 바로 그 고객으로 이동</b>합니다. 왼쪽 위 CRM 로고를 누르면 언제든 이 화면으로 돌아옵니다.
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>👤 고객 관리</summary>
+      <div class="help-body">
+        · 검색창은 이름·<b>초성(ㄱㅂㅅ)</b>·연락처·메모 모두 인식<br>
+        · 상태(가입완료/가망/부재중/거절)와 <b>#태그</b>로 필터링<br>
+        · 주소의 <b>T맵/카카오맵</b> 버튼으로 바로 길 안내, 📞/💬 버튼으로 바로 연락<br>
+        · <b>✅ 오늘 연락함</b>을 눌러두면 90일 넘게 연락 안 한 고객이 브리핑에 자동으로 뜹니다<br>
+        · 상담 기록에 <b>다음 할 일</b>을 적으면 캘린더에 자동 등록됩니다
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>🏥 실손·자동차·보장분석</summary>
+      <div class="help-body">
+        · <b>실손</b>: 가입일만 넣으면 세대(1~5세대) 자동 판정, 재가입 예정일 계산, 재가입 <b>6개월 전 자동 알림</b>. 상세 분석에서 5세대 전환 시 변화 비교<br>
+        · <b>자동차보험</b>: 만기일 등록 시 <b>45일 전 자동 알림</b> — 매년 확실한 접촉 명분!<br>
+        · <b>보장분석</b>: 보험사 보장분석 PDF를 등록하면 담보별 부족/미가입 진단과 보유계약·실손 정보가 자동 분석·반영됩니다<br>
+        · <b>상령일 1개월 전</b>에도 자동 알림이 생성됩니다 (보험료 인상 전 안내용)
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>💬 퀵메시지 · 📜 스크립트</summary>
+      <div class="help-body">
+        · <b>퀵메시지</b>: 고객 화면에서 열면 {고객명}{설계사명}{다음일정}이 자동으로 채워진 문자를 바로 발송. ⚙️템플릿 관리에서 자주 쓰는 문구를 등록하세요<br>
+        · <b>SCRIPT</b>: TA 상담 스크립트를 저장해두고, 고객 화면에서 열면 고객 이름이 적용된 버전을 복사할 수 있습니다
+      </div>
+    </details>
+
+    <details class="help-sec">
+      <summary>☁ PC↔휴대폰 동기화</summary>
+      <div class="help-body">
+        헤더의 <b>☁동기화</b>에서 센터장이 공유한 <b>서버 주소</b>를 넣고 <b>내 코드</b>를 만들면, 같은 코드를 넣은 모든 기기(PC·휴대폰)가 자동으로 동기화됩니다. 데이터는 내 코드로 암호화되어 올라가므로 같은 서버를 쓰는 동료나 시트 주인도 볼 수 없습니다. ⚠️ 코드를 잊으면 클라우드 복구가 불가능하니 꼭 적어두세요.
+      </div>
+    </details>
+    <details class="help-sec">
+      <summary>🙋 자주 묻는 질문</summary>
+      <div class="help-body">
+        <b>Q. 백업 가져오기에서 "고객 0명"이라고 떠요</b><br>
+        → 그 파일이 빈 백업입니다. 고객이 있는 화면에서 내보낸 파일인지 확인하세요.<br><br>
+        <b>Q. 폰을 바꾸면 데이터는요?</b><br>
+        → 기존 기기에서 💾백업 → 파일을 새 기기로 옮겨 → 가져오기. 끝!<br><br>
+        <b>Q. 동료에게 어떻게 공유하나요?</b><br>
+        → 이 페이지 주소만 보내면 됩니다. 각자 설치해서 각자의 고객으로 사용하게 됩니다.<br><br>
+        <b>Q. 실수로 삭제했어요</b><br>
+        → 삭제는 되돌릴 수 없습니다. 마지막 백업 파일을 가져오기로 복원하세요. 그래서 백업이 중요합니다!
+      </div>
+    </details>
+
+    <div class="modal-actions"><button class="btn-primary" id="mClose">닫기</button></div>
+  </div>`);
+  document.getElementById('mClose').onclick=m.close;
 }
 
 /* ================= 📤 엑셀 내보내기 ================= */
@@ -1786,9 +2315,6 @@ function renderHome(){
       ${card(`🏥 실손 재가입 임박 <span style="margin-left:auto;font-size:12px;color:var(--muted)">12개월 내 ${rejoinSoon.length}명</span>`,
         rejoinSoon.slice(0,6).map(x=>custRow(x.c.id,esc(x.c.name),`<span style="color:${x.months<0?'var(--red)':'#D97622'};font-weight:700">${x.rj.remain}</span>`)),
         '12개월 내 재가입 예정 고객이 없습니다.')}
-      ${card(`📵 부재중 재연락 <span style="margin-left:auto;font-size:12px;color:var(--muted)">${absent.length}명</span>`,
-        absent.slice(0,6).map(c=>custRow(c.id,esc(c.name),esc(c.phone||''))),
-        '부재중 상태의 고객이 없습니다.')}
       ${card(`💤 장기 미접촉 (90일+) <span style="margin-left:auto;font-size:12px;color:var(--muted)">${stale.length}명</span>`,
         stale.slice(0,6).map(x=>custRow(x.c.id,esc(x.c.name),`<span style="color:#D97622;font-weight:700">${x.days}일 경과</span>`)),
         '90일 이상 연락이 없는 고객이 없습니다. 👍')}
@@ -1798,9 +2324,6 @@ function renderHome(){
       ${card(`🚗 자동차 만기 임박 <span style="margin-left:auto;font-size:12px;color:var(--muted)">60일 내 ${carDue.length}명</span>`,
         carDue.slice(0,6).map(x=>custRow(x.c.id,esc(x.c.name)+(x.c.carInsurer?' · '+esc(x.c.carInsurer):''),`<span style="color:${x.dd<0?'var(--red)':'#D97622'};font-weight:700">${x.dd<0?'만기 경과':'D-'+x.dd}</span>`)),
         '60일 내 자동차보험 만기 고객이 없습니다.')}
-      ${card(`📋 진행 중 청구 <span style="margin-left:auto;font-size:12px;color:var(--muted)">${claimsOpen.length}건</span>`,
-        claimsOpen.slice(0,6).map(x=>custRow(x.c.id,esc(x.c.name)+' · '+esc(x.q.item||''),`<span class="badge" style="background:var(--gold-soft);color:var(--gold)">${esc(x.q.status)}</span>`)),
-        '진행 중인 청구 건이 없습니다.')}
     </div>
   </div>`;
 }
@@ -1816,7 +2339,7 @@ function printCounselCard(c){
   const row=(k,v)=>`<tr><td style="border:1px solid #999;padding:6px 10px;background:#f2f2f2;font-weight:700;width:110px;font-size:12px">${k}</td><td style="border:1px solid #999;padding:6px 10px;font-size:12.5px">${v||'—'}</td></tr>`;
   pc.innerHTML=`
   <div style="font-family:'Noto Sans KR',sans-serif;color:#111;padding:6px">
-    <h1 style="font-size:20px;border-bottom:3px solid #16345C;padding-bottom:8px;margin:0 0 4px">고객 상담카드</h1>
+    <h1 style="font-size:20px;border-bottom:3px solid #B8860B;padding-bottom:8px;margin:0 0 4px">고객 상담카드</h1>
     <p style="font-size:11px;color:#555;margin:0 0 12px">출력일 ${todayStr()}${db.agent?' · 담당 '+esc(db.agent):''}</p>
     <table style="border-collapse:collapse;width:100%;margin-bottom:14px">
       ${row('이름',esc(c.name)+(c.gender?' ('+c.gender+')':''))}
@@ -1831,7 +2354,7 @@ function printCounselCard(c){
     </table>
     ${pols.length?`<h2 style="font-size:14px;margin:0 0 6px">보유계약 (${pols.length}건 · 월 ${pols.reduce((s,p)=>s+(+p.premium||0),0).toLocaleString()}원)</h2>
     <table style="border-collapse:collapse;width:100%;margin-bottom:14px">
-      <tr>${['보험사','상품명','월 보험료','가입일','만기일'].map(h=>`<td style="border:1px solid #999;padding:5px 8px;background:#16345C;color:#fff;font-size:11.5px;font-weight:700">${h}</td>`).join('')}</tr>
+      <tr>${['보험사','상품명','월 보험료','가입일','만기일'].map(h=>`<td style="border:1px solid #999;padding:5px 8px;background:#0B0B0D;color:#F6E27A;font-size:11.5px;font-weight:700">${h}</td>`).join('')}</tr>
       ${pols.map(p=>`<tr>${[esc(p.insurer||''),esc(p.product||''),(+p.premium||0).toLocaleString()+'원',esc(p.joinDate||''),esc(p.endDate||'')].map(v=>`<td style="border:1px solid #999;padding:5px 8px;font-size:12px">${v}</td>`).join('')}</tr>`).join('')}
     </table>`:''}
     ${c.carEnd?`<h2 style="font-size:14px;margin:0 0 6px">자동차보험</h2><p style="font-size:12.5px;margin:0 0 12px">${esc(c.carInsurer||'')} · 만기 ${esc(c.carEnd)}${c.carNo?' · '+esc(c.carNo):''}</p>`:''}
@@ -2047,7 +2570,7 @@ function openQuickMsg(c){
     document.getElementById('tplPreview').textContent=txt;
     document.getElementById('btnCopyMsg').onclick=()=>navigator.clipboard.writeText(txt).then(()=>toast('메시지를 복사했습니다.')).catch(()=>toast('복사 실패'));
     const sms=document.getElementById('btnSms');
-    if(sms){sms.href='sms:'+phoneClean+'?body='+encodeURIComponent(txt);sms.onclick=async()=>{if(c){c.lastContact=todayStr();await saveDB();}};}
+    if(sms){sms.href=smsHref(phoneClean,txt);sms.onclick=async()=>{if(c){c.lastContact=todayStr();await saveDB();}};}
     document.getElementById('btnBackTpl').onclick=()=>{sel.style.display='none';document.getElementById('tplList').style.display='block';};
   });
 }
@@ -2179,8 +2702,10 @@ function openBackup(){
         if(!d.customers||!Array.isArray(d.customers))throw 0;
         if(!confirm(`백업 파일(고객 ${d.customers.length}명)로 현재 데이터를 덮어쓸까요?`))return;
         db=d;
-        if(!db.scripts)db.scripts=[];if(!db.repCodes)db.repCodes=[];
-        if(!db.insurerContacts)db.insurerContacts=[];if(!db.credentials)db.credentials=[];
+        if(!db.scripts||!db.scripts.length)db.scripts=JSON.parse(JSON.stringify(DEFAULTS.scripts));
+        if(!db.templates||!db.templates.length)db.templates=JSON.parse(JSON.stringify(DEFAULTS.templates));
+        if(!db.insurerContacts||!db.insurerContacts.length)db.insurerContacts=JSON.parse(JSON.stringify(DEFAULTS.insurerContacts));
+        if(!db.repCodes)db.repCodes=[];if(!db.credentials)db.credentials=[];
         await saveDB();m.close();render();toast('백업을 복원했습니다.');
       }catch(err){toast('올바른 백업 파일이 아닙니다.');}
     };
@@ -2201,6 +2726,7 @@ const EXCEL_SEED=[];
   }
   const na=generateAutoAlerts();
   if(na){await saveDB();setTimeout(()=>toast('자동 알림 '+na+'건을 캘린더에 등록했습니다. (재가입·상령일)'),900);}
+  await autoSyncOnLoad();
   render();
 })();
 </script>
